@@ -1,6 +1,6 @@
 const { GraphQLObjectType, GraphQLString } = require("graphql");
-const UserType = require("./UserType");
-const UserModel = require("./models/UserModel");
+const UserType = require("../../modules/user/UserType");
+const UserModel = require("../../modules/user/UserModel");
 
 module.exports = new GraphQLObjectType({
   name: "Mutation",
