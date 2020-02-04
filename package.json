@@ -15,5 +15,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "start": "npx nodemon src/index.js"
   }
 }
