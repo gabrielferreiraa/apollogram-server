@@ -1,12 +1,14 @@
 const Koa = require("koa");
 const Router = require("koa-router");
-const GraphQLHTTP = require('koa-graphql');
-const cors = require('@koa/cors')
-const bodyParser = require('koa-bodyparser');
+const GraphQLHTTP = require("koa-graphql");
+const cors = require("@koa/cors");
+const bodyParser = require("koa-bodyparser");
 const http = require("http");
 const mongoose = require("mongoose");
+const { graphqlPort } = require("./graphql/config");
+const { getUser } = require("./graphql/auth");
 
-const schema = require('./schema');
+const schema = require("./schema");
 
 mongoose.connect(
   "mongodb://gabrielferreira:pro14907@ds041198.mlab.com:41198/timeline-graphql",
@@ -25,10 +27,20 @@ mongoose.connect(
 const app = new Koa();
 const router = new Router();
 
-const graphqlServer = GraphQLHTTP({
-  schema,
-  graphiql: true
-});
+const graphqlSettingsPerReq = async req => {
+  const { user } = await getUser(req.header.authorization);
+
+  return {
+    graphiql: true,
+    schema,
+    context: {
+      user,
+      req
+    }
+  };
+};
+
+const graphqlServer = GraphQLHTTP(graphqlSettingsPerReq);
 
 router.all("/graphql", graphqlServer);
 
@@ -42,6 +54,8 @@ server.listen(4000, () => {
   console.log("##########################################################");
   console.log("#####               STARTING SERVER                  #####");
   console.log("##########################################################\n");
-  console.log(`App running and listening on port 4000...`);
-  console.log(`GraphQL Server is now running on http://localhost:4000/graphql`);
+  console.log(`App running and listening on port ${graphqlPort}...`);
+  console.log(
+    `GraphQL Server is now running on http://localhost:${graphqlPort}/graphql`
+  );
 });
