@@ -16,7 +16,7 @@
     "mongoose": "^5.8.11"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "nodemon": "2.0.2"
   },
   "scripts": {
     "start": "npx nodemon src/index.js"
