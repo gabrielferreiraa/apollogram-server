@@ -5,6 +5,8 @@ const cors = require("@koa/cors");
 const bodyParser = require("koa-bodyparser");
 const http = require("http");
 const mongoose = require("mongoose");
+const koaPlayground = require('graphql-playground-middleware-koa').default;
+
 const { graphqlPort, dbUrl } = require("./graphql/config");
 const { getUser } = require("./graphql/auth");
 
@@ -42,7 +44,10 @@ const graphqlSettingsPerReq = async req => {
 
 const graphqlServer = GraphQLHTTP(graphqlSettingsPerReq);
 
-router.all("/graphql", graphqlServer);
+router.post("/graphql", graphqlServer);
+router.all("/playground", koaPlayground({
+  endpoint: "/graphql"
+}));
 
 app.use(bodyParser());
 app.use(cors());
