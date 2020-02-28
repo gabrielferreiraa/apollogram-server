@@ -1,0 +1,10 @@
+{
+  "build": {
+    "env": {
+      "GRAPHQL_PORT": "@graphql_port",
+      "JWT_KEY": "@jwt_key",
+      "MLAB_USER": "@mlab_user",
+      "MLAB_PASSWORD": "@mlab_password"
+    }
+  }
+}
