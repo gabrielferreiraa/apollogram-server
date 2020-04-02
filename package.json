@@ -7,7 +7,7 @@
     "@koa/cors": "^3.0.0",
     "bcrypt": "^3.0.8",
     "dotenv": "^8.2.0",
-    "graphql": "^14.6.0",
+    "graphql": "^15.0.0",
     "graphql-playground-middleware-koa": "^1.6.12",
     "http": "^0.0.0",
     "jsonwebtoken": "^8.5.1",
