@@ -10,6 +10,7 @@ module.exports = {
     email: { type: GraphQLString },
   },
   resolve: async (_, user, { user: { _id } }) => {
-    return await UserModel.findOneAndUpdate({ _id }, user);
+    await UserModel.updateOne({ _id }, user);
+    return await UserModel.findOne({ _id });
   }
 };

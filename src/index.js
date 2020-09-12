@@ -45,9 +45,7 @@ const graphqlSettingsPerReq = async req => {
 const graphqlServer = GraphQLHTTP(graphqlSettingsPerReq);
 
 router.post("/graphql", graphqlServer);
-router.all("/playground", koaPlayground({
-  endpoint: "/graphql"
-}));
+router.all('/playground', koaPlayground({ endpoint: '/graphql' }));
 
 app.use(bodyParser());
 app.use(cors());
@@ -55,7 +53,7 @@ app.use(router.routes()).use(router.allowedMethods());
 
 const server = http.createServer(app.callback());
 
-server.listen(4000, () => {
+server.listen(graphqlPort, () => {
   console.log("##########################################################");
   console.log("#####               STARTING SERVER                  #####");
   console.log("##########################################################\n");
