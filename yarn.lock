@@ -235,6 +235,11 @@ color-name@1.1.3:
   resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.3.tgz#a7d0558bd89c42f795dd42328f740831ca53bc25"
   integrity sha1-p9BVi9icQveV3UIyj3QIMcpTvCU=
 
+commander@^2.20.3:
+  version "2.20.3"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+  integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -312,6 +317,11 @@ crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
   integrity sha1-ojD2T1aDEOFJgAmUB5DsmVRbyn4=
+
+cssfilter@0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/cssfilter/-/cssfilter-0.0.10.tgz#c6d2672632a2e5c83e013e6864a42ce8defd20ae"
+  integrity sha1-xtJnJjKi5cg+AT5oZKQs6N79IK4=
 
 debug@3.1.0, debug@~3.1.0:
   version "3.1.0"
@@ -544,17 +554,19 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.2:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 
-graphql-playground-html@1.6.19:
-  version "1.6.19"
-  resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.6.19.tgz#3883ecf5e8c18b3c0f08145b5417b9c01a1f0bef"
-  integrity sha512-cLAqoOlxHbGj/LBpr4l2BE9qXf3g8ShjQqU2daVueITI/3wIkcDQTaQaQp+HWv0uaX0dCsgMCFW/TooLj8yJOg==
-
-graphql-playground-middleware-koa@1.6.15:
-  version "1.6.15"
-  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-koa/-/graphql-playground-middleware-koa-1.6.15.tgz#dfe890e92d98004d615dc9a54ada71537b0291f4"
-  integrity sha512-lzHQVY71psSd19lkVby4KXusfMxAz8gWm2ea8dZRAP7l/a8vi1hop70DTfNtJmj6buYpyjZ1MSjTQO0ybPE9Rg==
+graphql-playground-html@^1.6.28:
+  version "1.6.28"
+  resolved "https://registry.yarnpkg.com/graphql-playground-html/-/graphql-playground-html-1.6.28.tgz#4a7c2e368c3f44deb7e86b70d3782b65edc64213"
+  integrity sha512-22uwTEGjZg0h9rYcM7WspcMPVsixAE8m56tNzwjGr2Y3pNY7OctbsMkJ3EPtPcL6ZdUpzsa4rMgYR54BGmTrpQ==
   dependencies:
-    graphql-playground-html "1.6.19"
+    xss "^1.0.6"
+
+graphql-playground-middleware-koa@1.6.20:
+  version "1.6.20"
+  resolved "https://registry.yarnpkg.com/graphql-playground-middleware-koa/-/graphql-playground-middleware-koa-1.6.20.tgz#123904a4807a0a71eeaed2756a238e6645355972"
+  integrity sha512-SNKXMdjMlugPJUS71uAsw4dxub8u9Znv811TkwYvFs7qgtn7za0kyXgKf0glPlDZ8l1TFLZ0J3AdIO6kcFxEnw==
+  dependencies:
+    graphql-playground-html "^1.6.28"
 
 graphql@^15.3.0:
   version "15.3.0"
@@ -1688,6 +1700,14 @@ xdg-basedir@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/xdg-basedir/-/xdg-basedir-3.0.0.tgz#496b2cc109eca8dbacfe2dc72b603c17c5870ad4"
   integrity sha1-SWsswQnsqNus/i3HK2A8F8WHCtQ=
+
+xss@^1.0.6:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/xss/-/xss-1.0.8.tgz#32feb87feb74b3dcd3d404b7a68ababf10700535"
+  integrity sha512-3MgPdaXV8rfQ/pNn16Eio6VXYPTkqwa0vc7GkiymmY/DqR1SE/7VPAAVZz1GJsJFrllMYO3RHfEaiUGjab6TNw==
+  dependencies:
+    commander "^2.20.3"
+    cssfilter "0.0.10"
 
 yallist@^2.1.2:
   version "2.1.2"
