@@ -1,7 +1,7 @@
 <h4 align="center">
-    <img src="https://img2.pngio.com/nodejs-koa-png-300_160.png" width="150px" style="margin: 20px;" />
-    <img src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png" width="250px" style="margin: 20px;" />
-    <img src="https://miro.medium.com/max/901/1*GkrYGz_r9W6AVgEloQpJFQ.png" width="200px" style="margin: 20px;" />
+    <img src="https://img2.pngio.com/nodejs-koa-png-300_160.png" width="150" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png" width="250" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img src="https://miro.medium.com/max/901/1*GkrYGz_r9W6AVgEloQpJFQ.png" width="200" />
     <br><br>
     Project to practice and learn GraphQL concepts
 </h4>
@@ -144,4 +144,4 @@ mutation {
 ```   
 
 ## License
-<a href="./LICENSE.md">MIT</a>
+<a href="./LICENSE">MIT</a>
