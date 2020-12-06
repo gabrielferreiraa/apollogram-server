@@ -29,7 +29,7 @@ See graphql interface on localhost link: `http://localhost:9000/playground`
 <hr />
 
 ## **TODO** 📝
-- [ ] `UpdatePost` - mutation
+- [x] `UpdatePost` - mutation
 - [ ] `DeletePost` - mutation
 - [ ] `DeleteUser` - mutation 
 - [ ] `getPostById` - query
