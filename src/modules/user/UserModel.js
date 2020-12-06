@@ -7,21 +7,25 @@ const UserSchema = new Schema(
   {
     name: {
       type: String,
-      require: true
+      require: true,
     },
     email: {
       type: String,
-      require: true
+      require: true,
     },
     password: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
+    picture: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );
 
-UserSchema.pre("save", function(next) {
+UserSchema.pre("save", function (next) {
   if (!this.isModified("password")) return next();
 
   this.password = bcrypt.hashSync(this.password, 10);

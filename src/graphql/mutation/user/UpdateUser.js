@@ -8,9 +8,10 @@ module.exports = {
   args: {
     name: { type: GraphQLString },
     email: { type: GraphQLString },
+    picture: { type: GraphQLString },
   },
   resolve: async (_, user, { user: { _id } }) => {
     await UserModel.updateOne({ _id }, user);
     return await UserModel.findOne({ _id });
-  }
+  },
 };

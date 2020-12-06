@@ -18,6 +18,7 @@
     "pm2": "^4.4.1"
   },
   "scripts": {
-    "start": "pm2-runtime start ecosystem.config.js"
+    "start": "pm2-runtime start ecosystem.config.js",
+    "dev": "yarn start --watch"
   }
 }

@@ -1,5 +1,11 @@
 const { GraphQLObjectType } = require("graphql");
-const { getUserByEmail, getAllUsers, getAllPosts } = require("../query");
+const {
+  getUserByEmail,
+  getAllUsers,
+  getAutenticatedUser,
+  getAllPosts,
+  getLoggedUserPosts,
+} = require("../query");
 
 module.exports = new GraphQLObjectType({
   name: "Query",
@@ -7,6 +13,8 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     getAllUsers,
     getUserByEmail,
-    getAllPosts
-  })
+    getAutenticatedUser,
+    getAllPosts,
+    getLoggedUserPosts,
+  }),
 });
