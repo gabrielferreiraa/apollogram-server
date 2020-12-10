@@ -3,22 +3,22 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const { ObjectId } = mongoose.Schema.Types;
 
-const PostSchema = new Schema(
+const postModal = new Schema(
   {
-    user: {
-      type: ObjectId,
-      ref: "User"
-    },
     title: {
       type: String,
-      require: true
+      require: true,
     },
     content: {
       type: String,
-      require: true
-    }
+      require: true,
+    },
+    user: {
+      type: ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Post", postModal);

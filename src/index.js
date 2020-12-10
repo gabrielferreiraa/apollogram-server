@@ -1,22 +1,19 @@
-const Koa = require("koa");
-const Router = require("koa-router");
-const GraphQLHTTP = require("koa-graphql");
-const cors = require("@koa/cors");
-const bodyParser = require("koa-bodyparser");
+const { ApolloServer } = require("apollo-server");
 const mongoose = require("mongoose");
-const koaPlayground = require('graphql-playground-middleware-koa').default;
 
+const schemas = require("./graphql/schemas");
+const resolvers = require("./graphql/resolvers");
 const { graphqlPort, dbUrl } = require("./graphql/config");
 const { getUser } = require("./graphql/auth");
-
-const schema = require("./schema");
+const userModel = require("./models/userModel");
+const postModel = require("./models/postModel");
 
 mongoose.connect(
   dbUrl,
   {
-    useNewUrlParser: true
+    useNewUrlParser: true,
   },
-  err => {
+  (err) => {
     if (err) {
       console.log("Some problem with the connection " + err);
     } else {
@@ -25,37 +22,32 @@ mongoose.connect(
   }
 );
 
-const app = new Koa();
-const router = new Router();
+const server = new ApolloServer({
+  resolvers,
+  typeDefs: schemas,
+  context: async ({ req }) => {
+    const context = {
+      models: {
+        user: userModel,
+        post: postModel,
+      },
+    };
 
-const graphqlSettingsPerReq = async req => {
-  const { user } = await getUser(req.header.authorization);
+    const token = req.headers.authorization;
 
-  return {
-    graphiql: true,
-    schema,
-    context: {
-      user,
-      req
-    }
-  };
-};
+    if (!token) return context;
 
-const graphqlServer = GraphQLHTTP(graphqlSettingsPerReq);
+    const me = await getUser(token);
 
-router.post("/graphql", graphqlServer);
-router.all('/playground', koaPlayground({ endpoint: '/graphql' }));
+    return {
+      ...context,
+      me,
+    };
+  },
+});
 
-app.use(bodyParser());
-app.use(cors());
-app.use(router.routes()).use(router.allowedMethods());
-
-app.listen(graphqlPort, () => {
+server.listen(graphqlPort).then(({ url }) => {
   console.log("##########################################################");
-  console.log("#####               STARTING SERVER                  #####");
+  console.log(`#####  🚀  Server ready at ${url}    #####`);
   console.log("##########################################################\n");
-  console.log(`App running and listening on port ${graphqlPort}...`);
-  console.log(
-    `GraphQL Server is now running on http://localhost:${graphqlPort}/graphql`
-  );
 });

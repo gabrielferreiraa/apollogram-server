@@ -1,7 +1,5 @@
 <h4 align="center">
-    <img src="https://img2.pngio.com/nodejs-koa-png-300_160.png" width="150" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_Logo_FullColorBlack_RGB-4td3yuxzjs.png" width="250" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <img src="https://miro.medium.com/max/901/1*GkrYGz_r9W6AVgEloQpJFQ.png" width="200" />
+    <img src="https://dimitr.im/static/8713b9169f0643428816999420e593f3/26df7/nodejs-apollo-graphql.png" width="350" />
     <br><br>
     Project to practice and learn GraphQL concepts
 </h4>
@@ -11,6 +9,10 @@
     <a href="https://graphql-timeline-api.herokuapp.com/playground" target="_blank">Demo 👉 https://graphql-timeline-api.herokuapp.com/playground</a>
 </p>
 
+## What are we using?
+- Apollo Server
+- GraphQL
+- MongoDB with Mongoose
 
 ## Getting Started
 ```bash
@@ -30,7 +32,7 @@ See graphql interface on localhost link: `http://localhost:9000/playground`
 
 ## **TODO** 📝
 - [x] `UpdatePost` - mutation
-- [ ] `DeletePost` - mutation
+- [x] `DeletePost` - mutation
 - [ ] `DeleteUser` - mutation 
 - [ ] `getPostById` - query
 - [ ] GraphQL improviments

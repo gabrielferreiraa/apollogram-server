@@ -1,30 +1,29 @@
+const { AuthenticationError } = require("apollo-server");
 const jwt = require("jsonwebtoken");
-const UserModel = require("../modules/user/UserModel");
+
+const userModel = require("../models/userModel");
 const { jwtSecret } = require("./config");
 
 async function getUser(token) {
-  if (!token) return { user: null };
+  if (!token) return null;
 
   try {
-    const decodedToken = jwt.verify(token.substring(4), jwtSecret);
+    const decodedToken = jwt.verify(token, jwtSecret);
+    const user = await userModel.findOne({ _id: decodedToken.id });
 
-    const user = await UserModel.findOne({ _id: decodedToken.id });
-
-    return {
-      user
-    };
-  } catch (err) {
-    return { user: null };
+    return user;
+  } catch (e) {
+    throw new AuthenticationError("Your session expired. Sign in again.");
   }
 }
 
 function generateToken(user) {
-  return `JWT ${jwt.sign({ id: user._id }, jwtSecret, {
-    expiresIn: "12h"
-  })}`;
+  return jwt.sign({ id: user._id }, jwtSecret, {
+    expiresIn: "12h",
+  });
 }
 
 module.exports = {
   getUser,
-  generateToken
+  generateToken,
 };
