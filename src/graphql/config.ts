@@ -8,6 +8,6 @@ const graphqlPort = ENV.PORT || 9000;
 const mLabUser = ENV.MLAB_USER;
 const mLabPass = ENV.MLAB_PASSWORD;
 
-const dbUrl = `mongodb://${mLabUser}:${mLabPass}@ds041198.mlab.com:41198/timeline-graphql`;
+const dbUrl = `mongodb+srv://${mLabUser}:${mLabPass}@cluster0.3pvt3.mongodb.net/<dbname>?retryWrites=true&w=majority`;
 
-module.exports = { jwtSecret, graphqlPort, dbUrl };
+export { jwtSecret, graphqlPort, dbUrl };

@@ -1,9 +1,14 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+import mongoose, { Schema, Document } from "mongoose";
+import bcrypt from "bcrypt";
 
-const Schema = mongoose.Schema;
+export interface User extends Document {
+  name: string;
+  email: string;
+  password: string;
+  picture?: string | null;
+}
 
-const userModel = new Schema(
+const userModel: Schema = new Schema(
   {
     name: {
       type: String,
@@ -25,11 +30,11 @@ const userModel = new Schema(
   { timestamps: true }
 );
 
-userModel.pre("save", function (next) {
+userModel.pre<User>("save", function (next) {
   if (!this.isModified("password")) return next();
 
   this.password = bcrypt.hashSync(this.password, 10);
   next();
 });
 
-module.exports = mongoose.model("User", userModel);
+export default mongoose.model<User>("User", userModel);

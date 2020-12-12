@@ -1,12 +1,10 @@
-const { ApolloServer } = require("apollo-server");
-const mongoose = require("mongoose");
+import { ApolloServer } from "apollo-server";
+import mongoose from "mongoose";
 
-const schemas = require("./graphql/schemas");
-const resolvers = require("./graphql/resolvers");
-const { graphqlPort, dbUrl } = require("./graphql/config");
-const { getUser } = require("./graphql/auth");
-const userModel = require("./models/userModel");
-const postModel = require("./models/postModel");
+import schema from "./graphql/schemas";
+import { graphqlPort, dbUrl } from "./graphql/config";
+import { getUser } from "./graphql/auth";
+import context, { Context } from "./context";
 
 mongoose.connect(
   dbUrl,
@@ -23,16 +21,8 @@ mongoose.connect(
 );
 
 const server = new ApolloServer({
-  resolvers,
-  typeDefs: schemas,
-  context: async ({ req }) => {
-    const context = {
-      models: {
-        user: userModel,
-        post: postModel,
-      },
-    };
-
+  schema,
+  context: async ({ req }): Promise<Context> => {
     const token = req.headers.authorization;
 
     if (!token) return context;

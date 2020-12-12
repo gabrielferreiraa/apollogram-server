@@ -7,13 +7,35 @@
     "apollo-server": "^2.19.0",
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
-    "graphql": "^15.3.0",
+    "graphql": "^15.4.0",
     "jsonwebtoken": "^8.5.1",
+    "lodash.merge": "^4.6.2",
     "mongoose": "^5.10.6",
     "pm2": "^4.4.1"
   },
   "scripts": {
     "start": "pm2-runtime start ecosystem.config.js",
-    "dev": "yarn start --watch"
+    "dev": "yarn start --watch",
+    "watch-node": "nodemon src/index.ts",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "generate": "graphql-codegen"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.19.4",
+    "@graphql-codegen/typescript-resolvers": "^1.18.0",
+    "@types/bcrypt": "^3.0.0",
+    "@types/graphql": "^14.5.0",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/mongoose": "^5.10.2",
+    "@types/node": "^14.14.12",
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.15.0",
+    "graphql-tools": "^7.0.2",
+    "nodemon": "^2.0.6",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.2"
   }
 }
