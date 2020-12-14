@@ -3,6 +3,7 @@ type User {
   name: String!
   email: String!
   picture: String
+  posts: [Post!]!
 }
 
 extend type Query {
@@ -21,6 +22,7 @@ extend type Mutation {
     password: String!
     email: String!
     picture: String
-  ): User
+  ): User!
+  updateUser(name: String!, email: String!, picture: String): User
   auth(email: String!, password: String!): Token
 }

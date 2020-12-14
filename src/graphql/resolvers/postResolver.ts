@@ -3,23 +3,42 @@ import { AuthenticationError } from "apollo-server";
 import { Resolvers } from "../../types";
 import { Context } from "../../context";
 
+const buildFilters = (args: any) => {
+  if (!args) return {};
+
+  return Object.keys(args).reduce((acc, val) => {
+    return { ...acc, [val]: args[val] };
+  }, {});
+};
+
 const resolvers: Resolvers<Context> = {
+  Post: {
+    isOwner: async (parent, __, ctx) => parent.user.equals(ctx.me?._id),
+  },
   Query: {
-    posts: async (_: any, __: any, { me, models: { post } }) => {
+    posts: async (_, args, { me, models: { post } }) => {
       if (!me) throw new AuthenticationError("You are not authenticated");
 
-      return await post.find().populate("user");
+      const filters = buildFilters(args.filter);
+
+      return await post.find(filters).populate("user");
     },
   },
   Mutation: {
-    createPost: (_: any, { title, content }, { me, models: { post } }) => {
+    createPost: async (
+      _: any,
+      { title, content },
+      { me, models: { post } }
+    ) => {
       if (!me) throw new AuthenticationError("You are not authenticated");
 
-      return new post({
+      const newPost = new post({
         title,
         content,
         user: me._id,
-      }).save();
+      });
+
+      return await (await newPost.populate("user").save()).execPopulate();
     },
     deletePost: async (_: any, { id }, { me, models: { post } }) => {
       if (!me) throw new AuthenticationError("You are not authenticated");

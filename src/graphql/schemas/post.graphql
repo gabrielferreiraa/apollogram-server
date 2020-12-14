@@ -3,13 +3,18 @@ type Post {
   title: String!
   content: String!
   user: User!
+  isOwner: Boolean!
+}
+
+input PostFilters {
+  user: ID
 }
 
 extend type Query {
-  posts: [Post!]!
+  posts(filter: PostFilters): [Post!]!
 }
 
 extend type Mutation {
-  createPost(title: String!, content: String!): Post
+  createPost(title: String!, content: String!): Post!
   deletePost(id: ID!): Post
 }

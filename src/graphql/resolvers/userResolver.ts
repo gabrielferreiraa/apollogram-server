@@ -6,31 +6,48 @@ import { Context } from "../../context";
 import { generateToken } from "../auth";
 
 const resolvers: Resolvers<Context> = {
+  User: {
+    posts: async (parent, __, ctx) => {
+      if (!ctx.me) throw new AuthenticationError("You are not authenticated");
+
+      const { models } = ctx;
+      return await models.post.find({ user: parent._id });
+    },
+  },
   Query: {
-    users: async (_: any, __: any, ctx) => {
+    users: async (_, __, ctx) => {
       if (!ctx.me) throw new AuthenticationError("You are not authenticated");
 
       const { models } = ctx;
       return await models.user.find().populate("post");
     },
-    user: async (_: any, args, ctx) => {
+    user: async (_, args, ctx) => {
       if (!ctx.me) throw new AuthenticationError("You are not authenticated");
 
       const { models } = ctx;
       return await models.user.findOne({ email: args.email });
     },
-    me: async (_: any, __: any, { me }) => {
+    me: async (_, __, { me }) => {
       if (!me) throw new AuthenticationError("You are not authenticated");
 
       return me;
     },
   },
   Mutation: {
-    async createUser(_: any, args, ctx) {
+    async createUser(_, args, ctx) {
       const { models } = ctx;
       return new models.user(args).save();
     },
-    async auth(_: any, args, ctx) {
+    updateUser: async (_, args, ctx) => {
+      if (!ctx.me) throw new AuthenticationError("You are not authenticated");
+
+      const {
+        models,
+        me: { _id },
+      } = ctx;
+      return await models.user.findOneAndUpdate({ _id }, args, { new: true });
+    },
+    async auth(_, args, ctx) {
       const { models } = ctx;
       const me = await models.user.findOne({
         email: args.email.toLowerCase(),
