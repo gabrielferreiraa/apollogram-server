@@ -8,6 +8,7 @@ const graphqlPort = ENV.PORT || 9000;
 const mLabUser = ENV.MLAB_USER;
 const mLabPass = ENV.MLAB_PASSWORD;
 
-const dbUrl = `mongodb+srv://${mLabUser}:${mLabPass}@cluster0.3pvt3.mongodb.net/<dbname>?retryWrites=true&w=majority`;
+// const dbUrl = `mongodb+srv://${mLabUser}:${mLabPass}@cluster0.3pvt3.mongodb.net/<dbname>?retryWrites=true&w=majority`;
+const dbUrl = ENV.MONGO_URL || "";
 
 export { jwtSecret, graphqlPort, dbUrl };

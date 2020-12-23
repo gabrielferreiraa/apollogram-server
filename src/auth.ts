@@ -1,8 +1,8 @@
 import { AuthenticationError } from "apollo-server";
 import jwt from "jsonwebtoken";
 
-import userModel, { User } from "../models/userModel";
-import { jwtSecret } from "./config";
+import userModel, { User } from "models/userModel";
+import { jwtSecret } from "config";
 
 export const getUser = async (token: string) => {
   try {

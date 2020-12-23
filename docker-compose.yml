@@ -1,0 +1,24 @@
+version: "3"
+services:
+  mongodb:
+    image: "mongo:4"
+    ports:
+      - 27017:27017
+  api:
+    build: .
+    command: yarn watch-node
+    ports:
+      - 4000:4000
+    environment:
+      MONGO_URL: mondodb
+      PORT: 4000
+    volumes:
+      - .:/src/
+      - node_modules:/src/node_modules
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+
+volumes:
+  node_modules: {}

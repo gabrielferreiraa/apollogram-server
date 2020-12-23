@@ -1,9 +1,9 @@
 import { AuthenticationError } from "apollo-server";
 import bcrypt from "bcrypt";
 
-import { Resolvers } from "../../types";
-import { Context } from "../../context";
-import { generateToken } from "../auth";
+import { Resolvers } from "types";
+import { Context } from "context";
+import { generateToken } from "auth";
 
 const resolvers: Resolvers<Context> = {
   User: {

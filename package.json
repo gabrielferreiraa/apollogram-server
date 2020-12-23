@@ -13,7 +13,7 @@
     "mongoose": "^5.10.6"
   },
   "scripts": {
-    "watch-node": "nodemon src/index.ts",
+    "watch-node": "NODE_PATH=./src nodemon src/index.ts",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
     "generate": "graphql-codegen"

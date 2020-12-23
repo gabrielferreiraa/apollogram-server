@@ -1,7 +1,7 @@
 import { AuthenticationError } from "apollo-server";
 
-import { Resolvers } from "../../types";
-import { Context } from "../../context";
+import { Resolvers } from "types";
+import { Context } from "context";
 
 const buildFilters = (args: any) => {
   if (!args) return {};
