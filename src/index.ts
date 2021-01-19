@@ -6,13 +6,15 @@ import { graphqlPort, dbUrl } from "config";
 import { getUser } from "auth";
 import context, { Context } from "context";
 
-mongoose.connect(dbUrl, (err) => {
-  if (err) {
-    console.log("Some problem with the connection " + err);
-  } else {
-    console.log("The Mongoose connection is ready");
-  }
+mongoose.connect(dbUrl, {
+  useNewUrlParser: true,
 });
+mongoose.connection.on("error", (err) =>
+  console.log("connection error: ", err)
+);
+mongoose.connection.on("open", () =>
+  console.log("The Mongoose connection is ready")
+);
 
 const server = new ApolloServer({
   schema,

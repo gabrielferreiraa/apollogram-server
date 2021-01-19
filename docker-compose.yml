@@ -1,24 +1,27 @@
-version: "3"
+version: "3.2"
 services:
-  mongodb:
-    image: "mongo:4"
+  db:
+    image: mongo:4.2
+    container_name: db
+    restart: always
     ports:
-      - 27017:27017
-  api:
-    build: .
-    command: yarn watch-node
-    ports:
-      - 4000:4000
+      - ${DB_PORT}:27017
     environment:
-      MONGO_URL: mondodb
-      PORT: 4000
-    volumes:
-      - .:/src/
-      - node_modules:/src/node_modules
-    links:
-      - mongodb
-    depends_on:
-      - mongodb
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
 
-volumes:
-  node_modules: {}
+  api:
+    image: node:latest
+    container_name: api
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: yarn watch-node

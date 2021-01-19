@@ -3,12 +3,10 @@ require("dotenv").config();
 const ENV = process.env;
 
 const jwtSecret = ENV.JWT_KEY || "jwt_secret";
-const graphqlPort = ENV.PORT || 9000;
+const graphqlPort = ENV.SERVER_PORT || 9000;
 
-const mLabUser = ENV.MLAB_USER;
-const mLabPass = ENV.MLAB_PASSWORD;
+const { DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME } = ENV;
 
-// const dbUrl = `mongodb+srv://${mLabUser}:${mLabPass}@cluster0.3pvt3.mongodb.net/<dbname>?retryWrites=true&w=majority`;
-const dbUrl = ENV.MONGO_URL || "";
+const dbUrl = `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`;
 
 export { jwtSecret, graphqlPort, dbUrl };
