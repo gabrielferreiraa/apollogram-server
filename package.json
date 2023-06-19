@@ -21,7 +21,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.19.4",
     "@graphql-codegen/typescript-resolvers": "^1.18.0",
-    "@types/bcrypt": "^3.0.0",
+    "@types/bcrypt": "^5.0.0",
     "@types/graphql": "^14.5.0",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/lodash.merge": "^4.6.6",
