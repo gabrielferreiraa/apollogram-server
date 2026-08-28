@@ -1264,17 +1264,17 @@
     "@types/koa-compose" "*"
     "@types/node" "*"
 
-"@types/lodash.merge@^4.6.6":
-  version "4.6.6"
-  resolved "https://registry.yarnpkg.com/@types/lodash.merge/-/lodash.merge-4.6.6.tgz#b84b403c1d31bc42d51772d1cd5557fa008cd3d6"
-  integrity sha512-IB90krzMf7YpfgP3u/EvZEdXVvm4e3gJbUvh5ieuI+o+XqiNEt6fCzqNRaiLlPVScLI59RxIGZMQ3+Ko/DJ8vQ==
+"@types/lodash.merge@^4.6.9":
+  version "4.6.9"
+  resolved "https://registry.yarnpkg.com/@types/lodash.merge/-/lodash.merge-4.6.9.tgz#93e94796997ed9a3ebe9ccf071ccaec4c6bc8fb8"
+  integrity sha512-23sHDPmzd59kUgWyKGiOMO2Qb9YtqRO/x4IhkgNUiPQ1+5MUVqi6bCZeq9nBJ17msjIMbEIO5u+XW4Kz6aGUhQ==
   dependencies:
     "@types/lodash" "*"
 
 "@types/lodash@*":
-  version "4.14.165"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.165.tgz#74d55d947452e2de0742bad65270433b63a8c30f"
-  integrity sha512-tjSSOTHhI5mCHTy/OOXYIhi2Wt1qcbHmuXD1Ha7q70CgI/I71afO4XtLb/cVexki1oVYchpul/TOuu3Arcdxrg==
+  version "4.17.25"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.25.tgz#69765ac7bcddb0eb072961cf292524a8f5b3c2c0"
+  integrity sha512-+K1NIO8I+F9/wNulfVvu23QYd0Pe9/OCqRrim4NoYIf1VoEDL90Ve4ClzpyqBLc7NpGGWRvYNCKZ1BE/Jpf8dQ==
 
 "@types/long@^4.0.0":
   version "4.0.1"
