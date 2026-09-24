@@ -10,7 +10,7 @@
     "graphql": "^15.4.0",
     "jsonwebtoken": "^8.5.1",
     "lodash.merge": "^4.6.2",
-    "mongoose": "^5.10.6"
+    "mongoose": "^6.0.0"
   },
   "scripts": {
     "watch-node": "nodemon src/index.ts",
